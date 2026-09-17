@@ -24,18 +24,8 @@ export const CONFIG = {
 
   /* --------------------------------------------------------------- signup */
   signup: {
-    /* Apps Script web-app URL, ending in /exec. Empty = form is disabled and
-       says so, instead of silently dropping addresses. */
-    endpoint: '',
-
-    /* Sent along with the address so one Sheet can serve several forms. */
-    source: 'ohdsi-boston-web',
-
-    /* Anti-abuse. These are usability guards, not security — see README. */
-    honeypotField: 'organisation-website',
-    minFillSeconds: 2,        // faster submissions are delayed, never dropped
-    storageKey: 'ohdsi-boston:subscribed',
-    timeoutMs: 15000
+    /* Public Google Apps Script web-app URL (ends in /exec). Not a secret. */
+    endpoint: 'https://script.google.com/macros/s/AKfycbzsgtMBgyXbCkvfwZb3wL9sb3fEBjMTuGPS0JAnKItRltje4FuB0LqPq9NflBq1wG76/exec'
   },
 
   /* ---------------------------------------------------------- story tuning */

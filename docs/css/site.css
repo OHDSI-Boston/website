@@ -127,18 +127,18 @@
 .hero__cycle li::after { content: '→'; color: var(--orange); }
 .hero__cycle li:last-child::after { content: '↻'; }
 
+.hero__join { max-width: 34rem; }
+.hero__join p { color: var(--ink-on-dark-mut); margin: 0 0 var(--space-m); }
+
 /* ================================================================== form */
 
 .signup { max-width: 34rem; }
-.signup__heading { margin-bottom: var(--space-xs); }
-.signup__submit { display: flex; align-items: flex-end; }
-.signup__row {
-  display: flex;
-  gap: var(--space-2xs);
-  flex-wrap: wrap;
-}
-.signup__field { flex: 1 1 15rem; min-width: 0; }
-.signup label {
+.signup__fields { display: grid; gap: var(--space-m); }
+.signup__field { min-width: 0; }
+.signup__submit { margin-top: var(--space-l); }
+.signup__submit .btn { min-height: 3rem; }
+.signup label,
+.signup legend {
   display: block;
   font-size: var(--step--1);
   font-weight: 650;
@@ -146,23 +146,66 @@
   text-transform: uppercase;
   margin-bottom: var(--space-2xs);
 }
+.signup__optional { font-weight: 400; letter-spacing: 0.02em; text-transform: none; opacity: 0.8; }
+.signup input[type='text'],
 .signup input[type='email'] {
   width: 100%;
   font: inherit;
-  font-size: var(--step-0);
+  font-size: var(--step-0);   /* >= 16px, so iOS does not zoom on focus */
   padding: 0.7rem 0.85rem;
   color: var(--ink);
   background: var(--white);
   border: 1px solid var(--rule-strong);
   border-radius: var(--radius);
 }
+.panel--dark .signup input[type='text'],
 .panel--dark .signup input[type='email'] {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(234, 241, 247, 0.34);
   color: var(--white);
 }
-.panel--dark .signup input[type='email']::placeholder { color: rgba(234, 241, 247, 0.5); }
 .signup input[aria-invalid='true'] { border-color: var(--orange-deep); }
+
+/* Data-partner question: secondary metadata, so smaller and quieter. */
+.signup__choice {
+  margin: var(--space-2xs) 0 0;
+  padding: var(--space-m) 0 0;
+  border: 0;
+  border-top: 1px solid var(--rule-strong);
+  min-width: 0;
+}
+.panel--dark .signup__choice { border-top-color: var(--rule-on-dark); }
+.signup .signup__choice legend {
+  float: left;               /* keeps the legend inside the fieldset's padding */
+  width: 100%;
+  font-size: var(--step--1);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 600;
+  line-height: var(--leading-snug);
+}
+.signup__options { clear: both; display: grid; gap: 0.15rem; }
+.signup .signup__option {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2.75rem;       /* comfortable touch target */
+  margin: 0;
+  font-size: var(--step-0);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+}
+.signup__option input {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  accent-color: var(--orange);
+}
+.signup__hint { font-size: var(--step--1); color: var(--ink-faint); margin: var(--space-2xs) 0 0; }
+.panel--dark .signup__hint { color: var(--ink-on-dark-mut); }
 
 /* The honeypot. Hidden from sight, from the tab order and from screen
    readers — only an automated filler will ever put anything in it. */
@@ -212,13 +255,11 @@
 .panel--dark .signup__status { color: var(--ink-on-dark-mut); }
 .signup[data-state='error'] .signup__status,
 .signup[data-state='invalid'] .signup__status { color: var(--orange); font-weight: 600; }
-.signup[data-state='success'] .signup__status,
-.signup[data-state='already'] .signup__status { color: var(--amber); font-weight: 600; }
+.signup[data-state='submitted'] .signup__status { color: var(--amber); font-weight: 600; }
 .panel:not(.panel--dark) .signup__status { color: var(--ink-muted); }
 .panel:not(.panel--dark) .signup[data-state='error'] .signup__status,
 .panel:not(.panel--dark) .signup[data-state='invalid'] .signup__status,
-.panel:not(.panel--dark) .signup[data-state='success'] .signup__status,
-.panel:not(.panel--dark) .signup[data-state='already'] .signup__status { color: var(--orange-text); }
+.panel:not(.panel--dark) .signup[data-state='submitted'] .signup__status { color: var(--orange-text); }
 
 .signup__note { font-size: var(--step--1); color: var(--ink-faint); margin-top: var(--space-xs); }
 .panel--dark .signup__note { color: var(--ink-on-dark-mut); }

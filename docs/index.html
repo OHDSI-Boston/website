@@ -44,47 +44,25 @@
   <section class="panel panel--dark hero" id="top">
     <div class="page hero__grid">
       <div>
-        <p class="eyebrow">A Boston-area OHDSI community</p>
-        <h1>Real-world health evidence, generated in the open.</h1>
-        <p class="lede">
-          Hundreds of health systems hold the answers to questions patients and
-          clinicians ask every day. The records cannot be pooled — and they do not
-          need to be. We bring the analysis to the data, and bring the evidence back out.
-        </p>
-        <ul class="hero__cycle">
-          <li>Questions</li>
-          <li>Studies</li>
-          <li>Federated analysis</li>
-          <li>Public evidence</li>
-          <li>Better questions</li>
+        <p class="eyebrow"><!-- content:hero-eyebrow inline -->A Boston-area OHDSI community<!-- /content --></p>
+        <h1><!-- content:hero-title inline -->Real-world health evidence, generated in the open.<!-- /content --></h1>
+        <p class="lede"><!-- content:hero-lede inline -->Hundreds of health systems hold the answers to questions patients and clinicians ask every day. The records cannot be pooled — and they do not need to be. We bring the analysis to the data, and bring the evidence back out.<!-- /content --></p>
+        <ul class="hero__cycle"><!-- content:hero-cycle items -->
+<li>Questions</li>
+<li>Studies</li>
+<li>Federated analysis</li>
+<li>Public evidence</li>
+<li>Better questions</li>
+<!-- /content -->
         </ul>
       </div>
 
       <div>
-        <form class="signup" data-signup id="join-top" novalidate>
-          <h2 class="eyebrow signup__heading">Join OHDSI Boston</h2>
-          <div class="signup__row">
-            <div class="signup__field">
-              <label for="email-top">Email address</label>
-              <input id="email-top" type="email" name="email" inputmode="email"
-                     autocomplete="email" placeholder="you@example.org"
-                     aria-describedby="status-top" required>
-            </div>
-            <div class="signup__submit">
-              <button class="btn" type="submit">Join</button>
-            </div>
-          </div>
-          <!-- Honeypot. Hidden from sight, tab order and screen readers. -->
-          <div class="signup__trap" aria-hidden="true">
-            <label for="trap-top">Do not fill this in</label>
-            <input id="trap-top" type="text" name="organisation-website" tabindex="-1" autocomplete="off">
-          </div>
-          <span class="signup__status" id="status-top" data-signup-status role="status"></span>
-          <p class="signup__note">
-            One list, used for meeting announcements and study calls. No tracking,
-            no sharing, unsubscribe whenever you like.
-          </p>
-        </form>
+        <div class="hero__join">
+          <h2 class="eyebrow"><!-- content:hero-join-heading inline -->Join OHDSI Boston<!-- /content --></h2>
+          <p><!-- content:hero-join-text inline -->Join researchers, clinicians, patients, engineers, and data partners working to generate real-world evidence for the public good.<!-- /content --></p>
+          <a class="btn" href="#join"><!-- content:hero-join-button inline -->Join OHDSI Boston<!-- /content --></a>
+        </div>
       </div>
     </div>
   </section>
@@ -93,13 +71,9 @@
   <section class="story" id="story" data-story>
 
     <div class="page story__intro">
-      <p class="eyebrow">How it works</p>
-      <h2>One cycle, six moves.</h2>
-      <p class="lede">
-        Scroll to follow a single question all the way around. The same nine
-        marks you meet at the start are the study, the code, the result and the
-        evidence — and by the end, a new question.
-      </p>
+      <p class="eyebrow"><!-- content:story-eyebrow inline -->How it works<!-- /content --></p>
+      <h2><!-- content:story-title inline -->One cycle, six moves.<!-- /content --></h2>
+      <p class="lede"><!-- content:story-lede inline -->Scroll to follow a single question all the way around. The same nine marks you meet at the start are the study, the code, the result and the evidence — and by the end, a new question.<!-- /content --></p>
     </div>
 
     <div class="page page--wide story__layout">
@@ -116,128 +90,97 @@
 
         <article class="step" data-scene="questions" id="scene-questions">
           <div class="step__card">
-            <span class="step__index">01 — Questions</span>
-            <h2>It starts with a question nobody can answer yet.</h2>
-            <p>
-              A patient wants to know what usually happens to people like them. A
-              clinician has two reasonable options and no good way to choose between
-              them. A researcher suspects a pattern but cannot see far enough to be sure.
-            </p>
-            <p>
-              These questions are everywhere, and most go unanswered — not because the
-              data does not exist, but because it sits in hundreds of separate health
-              systems that were never designed to answer them together.
-            </p>
-            <ul class="step__tags">
-              <li>Which treatment works best?</li>
-              <li>What happens to patients like me?</li>
-              <li>Is this treatment safe?</li>
-              <li>Who benefits?</li>
+            <span class="step__index"><!-- content:scene-1-label inline -->01 — Questions<!-- /content --></span>
+            <h2><!-- content:scene-1-title inline -->It starts with a question nobody can answer yet.<!-- /content --></h2><!-- content:scene-1-body block -->
+<p>A patient wants to know what usually happens to people like them. A clinician has two reasonable options and no good way to choose between them. A researcher suspects a pattern but cannot see far enough to be sure.</p>
+<p>These questions are everywhere, and most go unanswered — not because the data does not exist, but because it sits in hundreds of separate health systems that were never designed to answer them together.</p>
+<!-- /content --><ul class="step__tags"><!-- content:scene-1-tags items -->
+<li>Which treatment works best?</li>
+<li>What happens to patients like me?</li>
+<li>Is this treatment safe?</li>
+<li>Who benefits?</li>
+<!-- /content -->
             </ul>
           </div>
         </article>
 
         <article class="step" data-scene="study" id="scene-study">
           <div class="step__card">
-            <span class="step__index">02 — A study</span>
-            <h2>A question becomes a study.</h2>
-            <p>
-              The community turns the question into a protocol: who counts as a patient
-              in this analysis, what outcome we are measuring, which method answers the
-              question, and what would tell us the answer is wrong.
-            </p>
-            <p>
-              Written down this way, a study stops being an opinion about data and
-              becomes a thing that can be inspected, criticised, corrected, and run
-              again by someone else.
-            </p>
-            <ul class="step__tags">
-              <li>Cohorts</li><li>Outcomes</li><li>Analysis</li>
-              <li>Diagnostics</li><li>Study code</li>
+            <span class="step__index"><!-- content:scene-2-label inline -->02 — A study<!-- /content --></span>
+            <h2><!-- content:scene-2-title inline -->A question becomes a study.<!-- /content --></h2><!-- content:scene-2-body block -->
+<p>The community turns the question into a protocol: who counts as a patient in this analysis, what outcome we are measuring, which method answers the question, and what would tell us the answer is wrong.</p>
+<p>Written down this way, a study stops being an opinion about data and becomes a thing that can be inspected, criticised, corrected, and run again by someone else.</p>
+<!-- /content --><ul class="step__tags"><!-- content:scene-2-tags items -->
+<li>Cohorts</li>
+<li>Outcomes</li>
+<li>Analysis</li>
+<li>Diagnostics</li>
+<li>Study code</li>
+<!-- /content -->
             </ul>
           </div>
         </article>
 
         <article class="step" data-scene="network" id="scene-network">
           <div class="step__card">
-            <span class="step__index">03 — The network</span>
-            <h2>One study. Many databases. Patient data stays where it is.</h2>
-            <p>
-              The study travels out to participating institutions, each holding its own
-              records in the OMOP Common Data Model — a shared structure and vocabulary
-              that lets the same analysis run in many places without anyone shipping
-              records anywhere.
-            </p>
-            <p>
-              The code moves. The data does not. Every institution runs the analysis
-              behind its own walls, on its own patients, under its own governance.
-            </p>
-            <ul class="step__tags">
-              <li>Code travels outward</li>
-              <li>Computation is local</li>
-              <li>Records never leave</li>
+            <span class="step__index"><!-- content:scene-3-label inline -->03 — The network<!-- /content --></span>
+            <h2><!-- content:scene-3-title inline -->One study. Many databases. Patient data stays where it is.<!-- /content --></h2><!-- content:scene-3-body block -->
+<p>The study travels out to participating institutions, each holding its own records in the OMOP Common Data Model — a shared structure and vocabulary that lets the same analysis run in many places without anyone shipping records anywhere.</p>
+<p>The code moves. The data does not. Every institution runs the analysis behind its own walls, on its own patients, under its own governance.</p>
+<!-- /content --><ul class="step__tags"><!-- content:scene-3-tags items -->
+<li>Code travels outward</li>
+<li>Computation is local</li>
+<li>Records never leave</li>
+<!-- /content -->
             </ul>
           </div>
         </article>
 
         <article class="step" data-scene="evidence" id="scene-evidence">
           <div class="step__card">
-            <span class="step__index">04 — Results</span>
-            <h2>Results become public evidence.</h2>
-            <p>
-              What comes back is not patient data. It is aggregate results: estimates,
-              counts, distributions, and the diagnostics that say how much to trust them.
-            </p>
-            <p>
-              Those results assemble into a single piece of evidence — and alongside it,
-              wherever it is possible to do so, the protocol, the analytical code and the
-              diagnostics that produced it. Evidence you cannot inspect is just an
-              assertion.
-            </p>
-            <ul class="step__tags">
-              <li>Aggregate results</li><li>Protocol</li><li>Code</li><li>Diagnostics</li>
+            <span class="step__index"><!-- content:scene-4-label inline -->04 — Results<!-- /content --></span>
+            <h2><!-- content:scene-4-title inline -->Results become public evidence.<!-- /content --></h2><!-- content:scene-4-body block -->
+<p>What comes back is not patient data. It is aggregate results: estimates, counts, distributions, and the diagnostics that say how much to trust them.</p>
+<p>Those results assemble into a single piece of evidence — and alongside it, wherever it is possible to do so, the protocol, the analytical code and the diagnostics that produced it. Evidence you cannot inspect is just an assertion.</p>
+<!-- /content --><ul class="step__tags"><!-- content:scene-4-tags items -->
+<li>Aggregate results</li>
+<li>Protocol</li>
+<li>Code</li>
+<li>Diagnostics</li>
+<!-- /content -->
             </ul>
           </div>
         </article>
 
         <article class="step" data-scene="commons" id="scene-commons">
           <div class="step__card">
-            <span class="step__index">05 — The commons</span>
-            <h2>Evidence should compound.</h2>
-            <p>
-              Pull back, and the study we just followed is one object among many —
-              connected to the others by the diseases, treatments, populations, outcomes
-              and methods they share.
-            </p>
-            <p>
-              This is the part that usually fails. Most studies are published once and
-              then sit still. A commons behaves differently: each new result makes the
-              next question sharper, and old results can be revisited when the methods
-              or the data improve.
-            </p>
-            <ul class="step__tags">
-              <li>Diseases</li><li>Treatments</li><li>Populations</li>
-              <li>Outcomes</li><li>Methods</li>
+            <span class="step__index"><!-- content:scene-5-label inline -->05 — The commons<!-- /content --></span>
+            <h2><!-- content:scene-5-title inline -->Evidence should compound.<!-- /content --></h2><!-- content:scene-5-body block -->
+<p>Pull back, and the study we just followed is one object among many — connected to the others by the diseases, treatments, populations, outcomes and methods they share.</p>
+<p>This is the part that usually fails. Most studies are published once and then sit still. A commons behaves differently: each new result makes the next question sharper, and old results can be revisited when the methods or the data improve.</p>
+<!-- /content --><ul class="step__tags"><!-- content:scene-5-tags items -->
+<li>Diseases</li>
+<li>Treatments</li>
+<li>Populations</li>
+<li>Outcomes</li>
+<li>Methods</li>
+<!-- /content -->
             </ul>
           </div>
         </article>
 
         <article class="step" data-scene="loop" id="scene-loop">
           <div class="step__card">
-            <span class="step__index">06 — The loop</span>
-            <h2>And the answers produce better questions.</h2>
-            <p>
-              Patients, clinicians and researchers read what is known — and, just as
-              usefully, see clearly what is not. The gaps are where the next studies
-              come from.
-            </p>
-            <p>
-              You have just travelled once around a cycle that never stops turning. The
-              people you started with are still here, asking sharper questions than
-              before.
-            </p>
-            <ul class="step__tags">
-              <li>Ask</li><li>Answer</li><li>Share</li><li>Ask again</li>
+            <span class="step__index"><!-- content:scene-6-label inline -->06 — The loop<!-- /content --></span>
+            <h2><!-- content:scene-6-title inline -->And the answers produce better questions.<!-- /content --></h2><!-- content:scene-6-body block -->
+<p>Patients, clinicians and researchers read what is known — and, just as usefully, see clearly what is not. The gaps are where the next studies come from.</p>
+<p>You have just travelled once around a cycle that never stops turning. The people you started with are still here, asking sharper questions than before.</p>
+<!-- /content --><ul class="step__tags"><!-- content:scene-6-tags items -->
+<li>Ask</li>
+<li>Answer</li>
+<li>Share</li>
+<li>Ask again</li>
+<!-- /content -->
             </ul>
           </div>
         </article>
@@ -246,9 +189,8 @@
     </div>
 
     <div class="page story__outro">
-      <p>
-        Generate evidence. Share what we learn.
-        <span class="accent">Ask better questions. Repeat.</span>
+      <p><!-- content:story-outro inline -->Generate evidence. Share what we learn.<!-- /content -->
+        <span class="accent"><!-- content:story-outro-accent inline -->Ask better questions. Repeat.<!-- /content --></span>
       </p>
     </div>
   </section>
@@ -258,25 +200,22 @@
     <div class="page">
       <div class="split">
         <div>
-          <p class="eyebrow">Who we are</p>
-          <h2>OHDSI Boston is a local community, not an institution.</h2>
-          <p class="lede">
-            We are starting the group that a city with this much clinical data, this
-            much methodological talent and this many patients waiting on answers ought
-            to have. It is open to anyone willing to do the work carefully.
-          </p>
+          <p class="eyebrow"><!-- content:community-eyebrow inline -->Who we are<!-- /content --></p>
+          <h2><!-- content:community-title inline -->OHDSI Boston is a local community, not an institution.<!-- /content --></h2>
+          <p class="lede"><!-- content:community-lede inline -->We are starting the group that a city with this much clinical data, this much methodological talent and this many patients waiting on answers ought to have. It is open to anyone willing to do the work carefully.<!-- /content --></p>
         </div>
         <div>
-          <p class="eyebrow">It takes all of these</p>
-          <ul class="members">
-            <li>Patients and patient advocates</li>
-            <li>Researchers</li>
-            <li>Clinicians</li>
-            <li>Epidemiologists and statisticians</li>
-            <li>Data engineers and software developers</li>
-            <li>Universities and health systems</li>
-            <li>Biotech and technology organisations</li>
-            <li>Anyone who wants rigorous real-world evidence generated for the public good</li>
+          <p class="eyebrow"><!-- content:members-eyebrow inline -->It takes all of these<!-- /content --></p>
+          <ul class="members"><!-- content:members items -->
+<li>Patients and patient advocates</li>
+<li>Researchers</li>
+<li>Clinicians</li>
+<li>Epidemiologists and statisticians</li>
+<li>Data engineers and software developers</li>
+<li>Universities and health systems</li>
+<li>Biotech and technology organisations</li>
+<li>Anyone who wants rigorous real-world evidence generated for the public good</li>
+<!-- /content -->
           </ul>
         </div>
       </div>
@@ -284,50 +223,28 @@
       <h2 class="sr-only">Our initial principles</h2>
       <ol class="principles" data-reveal>
         <li>
-          <h3>Public evidence</h3>
-          <p>
-            Patient-level data stay private and distributed. Protocols, methods, code,
-            diagnostics, aggregate results and the resulting evidence should be public
-            wherever possible.
-          </p>
+          <h3><!-- content:principle-1-title inline -->Public evidence<!-- /content --></h3>
+          <p><!-- content:principle-1-text inline -->Patient-level data stay private and distributed. Protocols, methods, code, diagnostics, aggregate results and the resulting evidence should be public wherever possible.<!-- /content --></p>
         </li>
         <li>
-          <h3>Patient-centred questions</h3>
-          <p>
-            Patients and patient advocates should have a meaningful say in which
-            questions deserve to be answered — not be consulted once the study design
-            is already finished.
-          </p>
+          <h3><!-- content:principle-2-title inline -->Patient-centred questions<!-- /content --></h3>
+          <p><!-- content:principle-2-text inline -->Patients and patient advocates should have a meaningful say in which questions deserve to be answered — not be consulted once the study design is already finished.<!-- /content --></p>
         </li>
         <li>
-          <h3>Federated by design</h3>
-          <p>
-            Bring standardised analyses to the data rather than centralising sensitive
-            records. The network is stronger precisely because it is not one database.
-          </p>
+          <h3><!-- content:principle-3-title inline -->Federated by design<!-- /content --></h3>
+          <p><!-- content:principle-3-text inline -->Bring standardised analyses to the data rather than centralising sensitive records. The network is stronger precisely because it is not one database.<!-- /content --></p>
         </li>
         <li>
-          <h3>Reproducible science</h3>
-          <p>
-            A study should be inspectable, repeatable, and able to run across more than
-            one database. If it only works once, in one place, we have learned less
-            than we think.
-          </p>
+          <h3><!-- content:principle-4-title inline -->Reproducible science<!-- /content --></h3>
+          <p><!-- content:principle-4-text inline -->A study should be inspectable, repeatable, and able to run across more than one database. If it only works once, in one place, we have learned less than we think.<!-- /content --></p>
         </li>
         <li>
-          <h3>Sustainable evidence generation</h3>
-          <p>
-            Rigorous evidence costs real money. We want to experiment with economic and
-            organisational models that fund it while keeping what it produces available
-            for public benefit.
-          </p>
+          <h3><!-- content:principle-5-title inline -->Sustainable evidence generation<!-- /content --></h3>
+          <p><!-- content:principle-5-text inline -->Rigorous evidence costs real money. We want to experiment with economic and organisational models that fund it while keeping what it produces available for public benefit.<!-- /content --></p>
         </li>
         <li>
-          <h3>Evidence that compounds</h3>
-          <p>
-            Studies should add to an accumulating knowledge base rather than
-            disappearing into isolated reports that nobody revisits.
-          </p>
+          <h3><!-- content:principle-6-title inline -->Evidence that compounds<!-- /content --></h3>
+          <p><!-- content:principle-6-text inline -->Studies should add to an accumulating knowledge base rather than disappearing into isolated reports that nobody revisits.<!-- /content --></p>
         </li>
       </ol>
     </div>
@@ -337,38 +254,53 @@
   <section class="panel panel--dark cta" id="join">
     <div class="page cta__grid">
       <div>
-        <p class="eyebrow">Get involved</p>
-        <h2>Join OHDSI Boston.</h2>
-        <p class="lede">
-          Tell us where to reach you. We will write when there is a meeting to come to,
-          a study that needs a database, or a question that needs a better answer.
-        </p>
+        <p class="eyebrow"><!-- content:join-eyebrow inline -->Get involved<!-- /content --></p>
+        <h2><!-- content:join-title inline -->Join OHDSI Boston.<!-- /content --></h2>
+        <p class="lede"><!-- content:join-lede inline -->Join researchers, clinicians, patients, engineers, and data partners working to generate real-world evidence for the public good.<!-- /content --></p>
 
-        <form class="signup signup--cta" data-signup id="join-bottom" novalidate>
-          <div class="signup__row">
+        <form class="signup signup--cta" data-signup id="join-form" novalidate>
+          <div class="signup__fields">
             <div class="signup__field">
-              <label for="email-bottom">Email address</label>
-              <input id="email-bottom" type="email" name="email" inputmode="email"
-                     autocomplete="email" placeholder="you@example.org"
-                     aria-describedby="status-bottom" required>
+              <label for="join-name">Name</label>
+              <input id="join-name" type="text" name="name" autocomplete="name" required>
             </div>
-            <div class="signup__submit">
-              <button class="btn" type="submit">Join OHDSI Boston</button>
+            <div class="signup__field">
+              <label for="join-email">Email</label>
+              <input id="join-email" type="email" name="email" inputmode="email"
+                     autocomplete="email" spellcheck="false" required>
             </div>
+            <div class="signup__field">
+              <label for="join-institution">Institution or organization <span class="signup__optional">(optional)</span></label>
+              <input id="join-institution" type="text" name="institution" autocomplete="organization">
+            </div>
+
+            <fieldset class="signup__choice" aria-describedby="join-hasdata-note">
+              <legend>Could your organization potentially participate as a data partner? <span class="signup__optional">(optional)</span></legend>
+              <div class="signup__options">
+                <label class="signup__option"><input type="radio" name="hasData" value="yes"> Yes</label>
+                <label class="signup__option"><input type="radio" name="hasData" value="maybe"> Maybe — I'd like to learn more</label>
+                <label class="signup__option"><input type="radio" name="hasData" value="no"> Not currently</label>
+              </div>
+              <p class="signup__hint" id="join-hasdata-note"><!-- content:join-data-partner-hint inline -->OHDSI studies can run across participating institutions while patient-level data remains with each data partner.<!-- /content --></p>
+            </fieldset>
           </div>
+
+          <!-- Honeypot. Off-screen, out of the tab order, hidden from assistive technology. -->
           <div class="signup__trap" aria-hidden="true">
-            <label for="trap-bottom">Do not fill this in</label>
-            <input id="trap-bottom" type="text" name="organisation-website" tabindex="-1" autocomplete="off">
+            <label for="join-website">Website</label>
+            <input id="join-website" type="text" name="website" tabindex="-1" autocomplete="off">
           </div>
-          <span class="signup__status" id="status-bottom" data-signup-status role="status"></span>
-          <p class="signup__note">
-            We store your address and nothing else. Reply to any message to be removed.
-          </p>
+
+          <div class="signup__submit">
+            <button class="btn" type="submit"><!-- content:join-button inline -->Join OHDSI Boston<!-- /content --></button>
+          </div>
+          <p class="signup__status" data-signup-status aria-live="polite"></p>
+          <p class="signup__note"><!-- content:join-privacy-note inline -->We'll use your contact information to communicate about OHDSI Boston. We won't publish or sell your contact information.<!-- /content --></p>
         </form>
       </div>
 
       <div>
-        <h2 class="eyebrow">Elsewhere</h2>
+        <h2 class="eyebrow"><!-- content:elsewhere-heading inline -->Elsewhere<!-- /content --></h2>
         <ul class="linklist">
           <li><a data-link="ohdsi">OHDSI <span class="desc">The global collaborative</span></a></li>
           <li><a data-link="ohdsiForums">OHDSI Forums <span class="desc">Where the work is discussed</span></a></li>
