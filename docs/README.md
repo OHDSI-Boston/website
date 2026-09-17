@@ -1,7 +1,6 @@
 # OHDSI Boston — website
 
-The static site published at `docs/`. See [`../README.md`](../README.md) for the
-repository as a whole, including the R program that generates the logo.
+The static site published at `docs/`.
 
 Everything here is hand-written HTML, CSS and ES modules. There is no build
 step, no bundler, no framework and no server: what is in this directory is
