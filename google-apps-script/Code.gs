@@ -1,3 +1,5 @@
+/** @OnlyCurrentDoc */
+
 /**
  * Code.gs — signup endpoint for the OHDSI Boston site.
  *
@@ -16,10 +18,6 @@
 var CONFIG = {
   /* Tab to write to. '' = the first tab in the spreadsheet. */
   SHEET_NAME: '',
-
-  /* Only needed if this script is NOT bound to the Sheet (created at
-     script.google.com). Paste the ID from the Sheet URL: /d/<ID>/edit */
-  SPREADSHEET_ID: '',
 
   HEADERS: ['timestamp', 'name', 'email', 'institution', 'hasData'],
   HAS_DATA_VALUES: ['', 'yes', 'maybe', 'no'],
@@ -83,10 +81,10 @@ function testWrite() {
 /* ------------------------------------------------------------- internals */
 
 function getSheet_() {
-  var ss = CONFIG.SPREADSHEET_ID
-    ? SpreadsheetApp.openById(CONFIG.SPREADSHEET_ID)
-    : SpreadsheetApp.getActiveSpreadsheet();
-  if (!ss) throw new Error('No spreadsheet: bind the script to the Sheet or set CONFIG.SPREADSHEET_ID.');
+  /* @OnlyCurrentDoc limits the script to the Sheet it is bound to, so the
+     script must be opened from that Sheet (Extensions → Apps Script). */
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  if (!ss) throw new Error('No spreadsheet: open this script from the Sheet (Extensions → Apps Script).');
 
   var sheet = CONFIG.SHEET_NAME ? ss.getSheetByName(CONFIG.SHEET_NAME) : ss.getSheets()[0];
   if (!sheet) sheet = ss.insertSheet(CONFIG.SHEET_NAME);

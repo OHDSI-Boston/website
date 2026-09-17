@@ -10,7 +10,7 @@ Columns: `timestamp, name, email, institution, hasData`. The header row is added
 
 ## Setup
 
-1. Open the Sheet → **Extensions → Apps Script**. Replace the editor's `Code.gs` with this `Code.gs`. Save.
+1. Open the Sheet → **Extensions → Apps Script** (required: `@OnlyCurrentDoc` limits the script to the Sheet it is opened from). Replace the editor's `Code.gs` with this `Code.gs`. Save.
 2. Select `testWrite` in the function dropdown → **Run** → allow the permissions. A `setup test` row should appear in the first tab. Delete it.
 3. **Deploy → Manage deployments → Edit (pencil) → Version: New version → Deploy.** This keeps the existing `/exec` URL. (First time: **New deployment → Web app**, Execute as **Me**, Who has access **Anyone**, then put the URL in `docs/js/config.js`.)
 4. Open the `/exec` URL in a browser. Expect `{"ok":true,"service":"ohdsi-boston-signup"}`.
