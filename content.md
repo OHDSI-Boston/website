@@ -21,7 +21,7 @@ A Boston-area OHDSI community
 Real-world health evidence generated in Boston.
 
 ## hero-lede
-The health systems that provide us care hold the answers to questions patients and clinicians ask every day. The data generated from our routine medical care belongs to patients and can be used to generate evidece that leads to better health decisions and better care. At OHDSI-Boston, we are focused on making this data accessible to researchers and the analysis results accessible to patients. 
+The health systems that provide us care hold the answers to questions patients and clinicians ask every day. The data generated from our routine medical care belongs to patients and can be used to generate evidence that leads to better health decisions and better care. At OHDSI-Boston, we are focused on making this data accessible to researchers and the analysis results accessible to patients. 
 
 ## hero-cycle
 - Questions

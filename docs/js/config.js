@@ -36,8 +36,8 @@ export const CONFIG = {
     /* Exponential smoothing applied to scroll progress. 0 = no smoothing. */
     smoothing: 0.16,
     /* Cast sizes. The narrow variant is used below `narrowBreakpoint`. */
-    cast:       { people: 14, quanta: 9, sites: 8, archive: 30 },
-    castNarrow: { people: 10, quanta: 9, sites: 6, archive: 18 },
+    cast:       { people: 14, quanta: 9, sites: 8, archive: 35 },   // archive + 1 = 6 × 6 grid
+    castNarrow: { people: 10, quanta: 9, sites: 6, archive: 15 },   // archive + 1 = 4 × 4 grid
     narrowBreakpoint: 700
   }
 };

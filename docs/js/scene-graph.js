@@ -237,7 +237,7 @@ function buildLayouts(ctx) {
 /* ================================================================ factory */
 
 export function createSceneGraph(svg, options = {}) {
-  const counts = Object.assign({ people: 14, quanta: 9, sites: 8, archive: 30 }, options.cast);
+  const counts = Object.assign({ people: 14, quanta: 9, sites: 8, archive: 35 }, options.cast);
   /* Fraction of each step spent holding the scene rather than transitioning. */
   const HOLD = typeof options.hold === 'number' ? options.hold : 0.34;
   let reducedMotion = !!options.reducedMotion;
@@ -260,19 +260,20 @@ export function createSceneGraph(svg, options = {}) {
 
   const sites = SITE_POINTS.slice(0, counts.sites).map((p) => ({ x: p.x, y: p.y }));
 
-  /* Commons lattice: a jittered grid, one slot per archived study plus one
-     for the study the visitor has just followed. */
+  /* Commons lattice: an even grid, one slot per archived study plus one for
+     the study the visitor has just followed. Square cells; a cast size that
+     fills a whole rectangle (config.js) leaves no ragged last row. */
   const slots = counts.archive + 1;
-  const cols = Math.ceil(Math.sqrt(slots * 1.25));
+  const cols = Math.ceil(Math.sqrt(slots));
   const rowsN = Math.ceil(slots / cols);
   const lattice = [];
-  const dx = 62 / cols, dy = 62 / rowsN;
+  const step = 62 / Math.max(cols, rowsN);
   for (let r = 0, k = 0; r < rowsN; r++) {
     const inRow = Math.min(cols, slots - k);          // centre a partial row
     for (let c = 0; c < inRow; c++, k++) {
       lattice.push({
-        x: 50 + (c - (inRow - 1) / 2) * dx + (rnd() - 0.5) * 3.2,
-        y: 50 + (r - (rowsN - 1) / 2) * dy + (rnd() - 0.5) * 3.2
+        x: 50 + (c - (inRow - 1) / 2) * step,
+        y: 50 + (r - (rowsN - 1) / 2) * step
       });
     }
   }
