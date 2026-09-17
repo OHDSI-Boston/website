@@ -1,148 +1,120 @@
 /**
  * Code.gs — signup endpoint for the OHDSI Boston site.
  *
- * THIS FILE IS NOT PART OF THE WEBSITE. It is deployment/reference code that
- * you paste into a Google Apps Script project bound to a Google Sheet, and
- * deploy as a web app. GitHub Pages never serves it.
+ * NOT PART OF THE WEBSITE. Paste into the Apps Script project bound to the
+ * signup Google Sheet (Sheet → Extensions → Apps Script) and deploy as a web
+ * app. Setup: README.md in this directory.
  *
- * It exists because the site is static: it has no server of its own, and the
- * Sheet's credentials must not be in browser code. This script runs as *you*,
- * under Google's authentication, and is the only thing that can write to the
- * Sheet. The browser only ever sees its public /exec URL.
- *
- * Setup is in README.md in this directory.
+ * The site POSTs form fields (FormData, mode: 'no-cors'):
+ *   name, email, institution, hasData, website (honeypot)
+ * The browser cannot read the reply; the JSON below is for curl and for the
+ * Executions log.
  */
 
 /* ----------------------------------------------------------------- config */
 
 var CONFIG = {
-  /* Tab within the bound spreadsheet. Created automatically if missing. */
-  SHEET_NAME: 'signups',
+  /* Tab to write to. '' = the first tab in the spreadsheet. */
+  SHEET_NAME: '',
 
-  /* Only accept posts from these origins. This is a courtesy check, not a
-     security boundary — Origin is trivially forged outside a browser. Leave
-     the array empty to accept any origin. */
-  ALLOWED_ORIGINS: [
-    // 'https://your-org.github.io',
-    // 'https://ohdsiboston.org'
-  ],
+  /* Only needed if this script is NOT bound to the Sheet (created at
+     script.google.com). Paste the ID from the Sheet URL: /d/<ID>/edit */
+  SPREADSHEET_ID: '',
 
-  /* Reject a second signup from the same address. */
-  DEDUPE: true,
+  HEADERS: ['timestamp', 'name', 'email', 'institution', 'hasData'],
+  HAS_DATA_VALUES: ['', 'yes', 'maybe', 'no'],
 
-  /* Crude flood guard: refuse if more than this many rows were written in the
-     last minute, from any source. Protects the Sheet, not the mailing list. */
-  MAX_WRITES_PER_MINUTE: 20,
-
-  MAX_EMAIL_LENGTH: 254
+  MAX_WRITES_PER_MINUTE: 30,
+  MAX_LENGTH: { name: 200, email: 254, institution: 300 }
 };
 
 /* ------------------------------------------------------------------ entry */
 
 function doPost(e) {
   try {
-    var body = parseBody_(e);
-    if (!body) return json_({ ok: false, message: 'Malformed request.' });
+    var p = (e && e.parameter) || {};
 
-    if (!originAllowed_(e)) return json_({ ok: false, message: 'Origin not allowed.' });
+    /* Honeypot: pretend success so a bot learns nothing. */
+    if (clean_(p.website, 500)) return json_({ ok: true });
 
-    var email = normaliseEmail_(body.email);
-    if (!email) return json_({ ok: false, message: 'Please provide a valid email address.' });
+    var name = clean_(p.name, CONFIG.MAX_LENGTH.name);
+    var email = clean_(p.email, CONFIG.MAX_LENGTH.email).toLowerCase();
+    var institution = clean_(p.institution, CONFIG.MAX_LENGTH.institution);
+    var hasData = clean_(p.hasData, 10).toLowerCase();
 
-    /* Server-side honeypot, in case the client one is bypassed. */
-    if (body['organisation-website']) return json_({ ok: true, status: 'subscribed' });
+    if (!name) return json_({ ok: false, error: 'Name is required.' });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return json_({ ok: false, error: 'Valid email is required.' });
+    if (CONFIG.HAS_DATA_VALUES.indexOf(hasData) === -1) hasData = '';
 
     var lock = LockService.getScriptLock();
-    if (!lock.tryLock(10000)) return json_({ ok: false, message: 'Busy, please retry.' });
-
+    if (!lock.tryLock(10000)) return json_({ ok: false, error: 'Busy, please retry.' });
     try {
       var sheet = getSheet_();
-
-      if (rateLimited_(sheet)) return json_({ ok: false, message: 'Too many signups right now. Please try again shortly.' });
-
-      if (CONFIG.DEDUPE && hasEmail_(sheet, email)) {
-        return json_({ ok: true, status: 'already' });
-      }
-
-      sheet.appendRow([
-        new Date(),
-        email,
-        String(body.source || '').slice(0, 64),
-        String((e && e.parameter && e.parameter.ref) || '').slice(0, 128)
-      ]);
-      return json_({ ok: true, status: 'subscribed' });
+      if (rateLimited_()) return json_({ ok: false, error: 'Too many signups right now.' });
+      sheet.appendRow([new Date(), safe_(name), safe_(email), safe_(institution), hasData]);
     } finally {
       lock.releaseLock();
     }
+    return json_({ ok: true });
   } catch (err) {
-    console.error(err);
-    return json_({ ok: false, message: 'Server error.' });
+    console.error(err && err.stack ? err.stack : err);   // visible under Executions
+    return json_({ ok: false, error: 'Unable to save signup.' });
   }
 }
 
-/** A GET returns a health check, which makes the deployment easy to verify. */
+/** Health check: open the /exec URL in a browser to confirm the deployment. */
 function doGet() {
   return json_({ ok: true, service: 'ohdsi-boston-signup' });
 }
 
+/**
+ * Run this once from the editor (select it, click Run) to authorize the
+ * script and confirm it can write. It appends a row named "setup test";
+ * delete that row afterwards.
+ */
+function testWrite() {
+  var out = doPost({ parameter: {
+    name: 'setup test', email: 'setup-test@example.org',
+    institution: '', hasData: '', website: ''
+  } });
+  console.log(out.getContent());
+}
+
 /* ------------------------------------------------------------- internals */
 
-function parseBody_(e) {
-  if (!e) return null;
-  /* The site posts JSON with a text/plain content type, so the browser treats
-     it as a simple request and skips the CORS preflight that Apps Script does
-     not answer. Form-encoded posts are accepted too. */
-  if (e.postData && e.postData.contents) {
-    try { return JSON.parse(e.postData.contents); } catch (ignore) { /* fall through */ }
-  }
-  if (e.parameter && e.parameter.email) return e.parameter;
-  return null;
-}
-
-function originAllowed_(e) {
-  if (!CONFIG.ALLOWED_ORIGINS.length) return true;
-  var origin = (e && e.parameter && e.parameter.origin) || '';
-  if (!origin) return true;   // Apps Script does not expose request headers
-  return CONFIG.ALLOWED_ORIGINS.indexOf(origin) !== -1;
-}
-
-function normaliseEmail_(value) {
-  if (typeof value !== 'string') return null;
-  var email = value.trim().toLowerCase();
-  if (!email || email.length > CONFIG.MAX_EMAIL_LENGTH) return null;
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return null;
-  return email;
-}
-
 function getSheet_() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
-  if (!sheet) {
-    sheet = ss.insertSheet(CONFIG.SHEET_NAME);
-    sheet.appendRow(['timestamp', 'email', 'source', 'ref']);
+  var ss = CONFIG.SPREADSHEET_ID
+    ? SpreadsheetApp.openById(CONFIG.SPREADSHEET_ID)
+    : SpreadsheetApp.getActiveSpreadsheet();
+  if (!ss) throw new Error('No spreadsheet: bind the script to the Sheet or set CONFIG.SPREADSHEET_ID.');
+
+  var sheet = CONFIG.SHEET_NAME ? ss.getSheetByName(CONFIG.SHEET_NAME) : ss.getSheets()[0];
+  if (!sheet) sheet = ss.insertSheet(CONFIG.SHEET_NAME);
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(CONFIG.HEADERS);
     sheet.setFrozenRows(1);
   }
   return sheet;
 }
 
-function hasEmail_(sheet, email) {
-  var last = sheet.getLastRow();
-  if (last < 2) return false;
-  var values = sheet.getRange(2, 2, last - 1, 1).getValues();
-  for (var i = 0; i < values.length; i++) {
-    if (String(values[i][0]).trim().toLowerCase() === email) return true;
-  }
-  return false;
+/* Counts writes in the last minute with a cache counter, so it does not
+   depend on the Sheet's contents or ordering. */
+function rateLimited_() {
+  var cache = CacheService.getScriptCache();
+  var key = 'writes-' + Math.floor(Date.now() / 60000);
+  var n = Number(cache.get(key) || 0) + 1;
+  cache.put(key, String(n), 120);
+  return n > CONFIG.MAX_WRITES_PER_MINUTE;
 }
 
-function rateLimited_(sheet) {
-  var last = sheet.getLastRow();
-  if (last < 2) return false;
-  var n = Math.min(CONFIG.MAX_WRITES_PER_MINUTE, last - 1);
-  var stamps = sheet.getRange(last - n + 1, 1, n, 1).getValues();
-  if (stamps.length < CONFIG.MAX_WRITES_PER_MINUTE) return false;
-  var oldest = new Date(stamps[0][0]).getTime();
-  return (Date.now() - oldest) < 60 * 1000;
+function clean_(value, max) {
+  return String(value == null ? '' : value).trim().slice(0, max);
+}
+
+/* A cell starting with = + - @ is run as a formula when the Sheet is opened
+   or exported; prefix with ' so it stays text. */
+function safe_(value) {
+  return /^[=+\-@]/.test(value) ? "'" + value : value;
 }
 
 function json_(payload) {
