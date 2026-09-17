@@ -21,14 +21,13 @@ export const SCENES = [
        hidden from assistive technology. */
     captions: [
       'Which treatment works best?',
-      'What happens to patients like me?',
-      'Is this treatment safe?',
-      'Who benefits, and who does not?'
+      'Is it safe?',
+      'Who benefits most?'
     ]
   },
-  { id: 'study',    label: 'A study',     captions: ['A question becomes a protocol'] },
-  { id: 'network',  label: 'The network', captions: ['Code travels outward', 'Records never leave'] },
-  { id: 'evidence', label: 'Results',     captions: ['Aggregate results return'] },
-  { id: 'commons',  label: 'The commons', captions: ['One study among many'] },
-  { id: 'loop',     label: 'The loop',    captions: ['Better questions'] }
+  { id: 'study',    label: 'Study',       captions: ['A written protocol'] },
+  { id: 'network',  label: 'Network',     captions: ['Code travels', 'Data stays put'] },
+  { id: 'evidence', label: 'Results',     captions: ['Aggregate results only'] },
+  { id: 'commons',  label: 'Evidence base', captions: ['One study among many'] },
+  { id: 'loop',     label: 'Next questions', captions: ['Better questions'] }
 ];

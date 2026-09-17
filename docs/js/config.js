@@ -28,6 +28,13 @@ export const CONFIG = {
     endpoint: 'https://script.google.com/macros/s/AKfycbzsgtMBgyXbCkvfwZb3wL9sb3fEBjMTuGPS0JAnKItRltje4FuB0LqPq9NflBq1wG76/exec'
   },
 
+  /* ------------------------------------------------------------ night sky */
+  sky: {
+    revolutionSeconds: 3600,        // one full turn of the star field per hour
+    shootingStarMeanSeconds: 180,   // random wait between shooting stars, mean
+    dayCycleSeconds: 1200           // sunrise → sunset → night → sunrise, 20 minutes
+  },
+
   /* ---------------------------------------------------------- story tuning */
   story: {
     /* Fraction of each step's scroll distance spent holding the scene

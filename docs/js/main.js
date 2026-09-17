@@ -12,6 +12,7 @@ import { SCENES } from './story.js';
 import { createSceneGraph } from './scene-graph.js';
 import { createScrollDirector } from './scroll-director.js';
 import { attachSignup } from './signup.js';
+import { startSky } from './sky.js';
 
 document.documentElement.classList.remove('no-js');
 document.documentElement.classList.add('js');
@@ -126,6 +127,13 @@ applyLinks();
 document.querySelectorAll('form[data-signup]').forEach(attachSignup);
 initStory();
 initReveals();
+
+const sky = startSky(document.querySelectorAll('.panel--dark'), {
+  ...CONFIG.sky,
+  reducedMotion: prefersReducedMotion()
+});
+const skyMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (skyMotion.addEventListener) skyMotion.addEventListener('change', () => sky.setReducedMotion(skyMotion.matches));
 
 const year = document.querySelector('[data-year]');
 if (year) year.textContent = String(new Date().getFullYear());

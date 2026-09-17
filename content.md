@@ -12,16 +12,17 @@ Rules:
 Preview locally: python3 scripts/build_content.py, then run the site.
 -->
 
+
 # Hero (top of page)
 
 ## hero-eyebrow
-A Boston-area OHDSI community
+OHDSI Boston
 
 ## hero-title
-Real-world health evidence generated in Boston.
+Real-world health evidence, generated in Boston.
 
 ## hero-lede
-The health systems that provide us care hold the answers to questions patients and clinicians ask every day. The data generated from our routine medical care belongs to patients and can be used to generate evidence that leads to better health decisions and better care. At OHDSI-Boston, we are focused on making this data accessible to researchers and the analysis results accessible to patients. 
+Routine medical care produces data that can answer important health questions. OHDSI Boston analyzes that data safely and makes the results public.
 
 ## hero-cycle
 - Questions
@@ -34,7 +35,7 @@ The health systems that provide us care hold the answers to questions patients a
 Join OHDSI Boston
 
 ## hero-join-text
-Join researchers, clinicians, patients, engineers, and data partners working to generate real-world evidence for the public good.
+Researchers, clinicians, patients, engineers, and data partners working together on real-world evidence.
 
 ## hero-join-button
 Join OHDSI Boston
@@ -45,80 +46,70 @@ Join OHDSI Boston
 How it works
 
 ## story-title
-The Virtuous Cycle of Evidence Generation
+From question to evidence
 
 ## story-lede
-Scroll to follow a single question all the way through the cycle of evidence generation.
+Follow one question through the cycle.
 
 # Scene 1: questions
 
 ## scene-1-label
-01 — Questions
+01 · Questions
 
 ## scene-1-title
-It starts with a health question nobody has answered yet.
+It starts with a question.
 
 ## scene-1-body
-A patient wants to know what usually happens to people like them. A clinician has two reasonable options and no good way to choose between them. A researcher suspects a pattern but needs data to confirm a hypothesis.
-
-These questions are everywhere, and the answers lie in the data we (the patients) have generated through our routine medical care. Collectively we can improve our own care and the care of all our neighbors by safely and correctly analyzing our data.
+Patients want to know what to expect. Clinicians need to choose between treatments. Researchers need data to test a hypothesis.
 
 ## scene-1-tags
 - Which treatment works best?
-- What happens to patients like me?
-- Is this treatment safe?
-- Who is most likely to benefit from a treatment?
+- Is it safe?
+- Who benefits most?
 
 # Scene 2: study
 
 ## scene-2-label
-02 - A study
+02 · Study
 
 ## scene-2-title
-A question becomes a study.
+The question becomes a study.
 
 ## scene-2-body
-The OHDSI-Boston community turns the question into a protocol: who counts as a patient in this analysis, what outcome we are measuring, which method answers the question, and what would tell us the answer is wrong.
-
-Written down this way, a study stops being an opinion about data and becomes a thing that can be inspected, criticised, corrected, and run again by someone else.
+A written protocol defines the patients, the outcome, the analysis, and the checks that show whether the result can be trusted. Anyone can inspect it and run it again.
 
 ## scene-2-tags
 - Cohorts
 - Outcomes
 - Analysis
 - Diagnostics
-- Study code
 
 # Scene 3: network
 
 ## scene-3-label
-03 - The data network
+03 · Network
 
 ## scene-3-title
-One study, many databases. Patient data stays safe where it already is.
+The study goes to the data.
 
 ## scene-3-body
-The study travels out to participating institutions, each holding its own records in the OMOP Common Data Model - a shared structure and vocabulary that lets the same analysis run in many places without moving data outside of firewalls.
-
-The code moves. The data does not. Every institution runs the analysis behind its own walls, on its own patients, under its own governance.
+Participating institutions store their records in the OMOP Common Data Model, so the same study code runs at every site. Each institution runs the analysis on its own systems, and patient data stays there.
 
 ## scene-3-tags
-- Code travels outward
-- Computation is local
-- Records never leave
+- Code travels
+- Analysis runs locally
+- Data stays put
 
 # Scene 4: evidence
 
 ## scene-4-label
-04 - Results
+04 · Results
 
 ## scene-4-title
-Results become a public evidence record.
+Results are made public.
 
 ## scene-4-body
-What comes back is not patient data. It is aggregate results: estimates, counts, distributions, and the diagnostics that say how much to trust them.
-
-Those results become a single piece of evidence and alongside it we store the protocol, the analytical code, and the diagnostics. This is evidence you can inspect, criticize, and reproduce, all in the public domain for the benefit of everyone.
+Each site returns aggregate results only: estimates, counts, and diagnostics. We publish them with the protocol and code so others can review and reproduce the work.
 
 ## scene-4-tags
 - Aggregate results
@@ -129,15 +120,13 @@ Those results become a single piece of evidence and alongside it we store the pr
 # Scene 5: commons
 
 ## scene-5-label
-05 - The commons
+05 · Evidence base
 
 ## scene-5-title
-Evidence should compound.
+Evidence builds over time.
 
 ## scene-5-body
-Pull back, and the study we just followed is one object among many, connected to the others by the diseases, treatments, populations, outcomes and methods they share.
-
-With OHDSI partners from across the world we are building an evidence commons where each new result makes the next question sharper, and old results can be revisited when the methods or the data improve.
+Each study joins a growing body of evidence shared across the global OHDSI network. New results inform the next study, and earlier results can be revisited as methods improve.
 
 ## scene-5-tags
 - Diseases
@@ -149,29 +138,27 @@ With OHDSI partners from across the world we are building an evidence commons wh
 # Scene 6: loop
 
 ## scene-6-label
-06 - The loop
+06 · Next questions
 
 ## scene-6-title
-Every answer produces better questions the next time around.
+Answers lead to better questions.
 
 ## scene-6-body
-Patients, clinicians and researchers can see what is known and what gaps in knowledge remain. The gaps are where the next studies come from.
-
-You have just travelled once around a cycle that never stops turning. The people you started with are still here, asking sharper questions than before.
+Published evidence shows what is known and where gaps remain. Those gaps become the next studies.
 
 ## scene-6-tags
 - Ask
-- Answer
+- Study
 - Share
-- Ask again
+- Repeat
 
 # After the story
 
 ## story-outro
-Generate evidence from the data we (the public) created for the public good.
+Health data from the public, analyzed for the public.
 
 ## story-outro-accent
-For the pressing questions we have now, and the questions we have not thought to ask yet.
+Evidence for today's questions and tomorrow's.
 
 # Who we are
 
@@ -179,61 +166,59 @@ For the pressing questions we have now, and the questions we have not thought to
 Who we are
 
 ## community-title
-OHDSI Boston is a local community of OHDSI practitioners
+A Boston community of OHDSI collaborators.
 
 ## community-lede
-We are starting a group that a city with this much clinical data, this much methodological talent and this many patients waiting on answers ought to have. It is open to anyone willing to do the work to make this vision a reality.
+OHDSI Boston is open to anyone who wants to generate reliable evidence from real-world health data.
 
 ## members-eyebrow
-It takes all of these
+Who participates
 
 ## members
-- Patients and patient advocates
-- Researchers
+- Patients and advocates
 - Clinicians
-- Epidemiologists and statisticians
+- Researchers, epidemiologists, and statisticians
 - Data engineers and software developers
-- Universities and health systems
-- Biotech and technology organisations
-- Anyone who wants rigorous real-world evidence generated for the public good
+- Health systems and universities
+- Life sciences and technology companies
 
 # Principles
 
 ## principle-1-title
-Public evidence
+Public results
 
 ## principle-1-text
-Patient-level data stay private and distributed. Protocols, methods, code, diagnostics, aggregate results and the resulting evidence should be public wherever possible.
+Patient-level data stays private. Protocols, code, and aggregate results are public whenever possible.
 
 ## principle-2-title
-Patient-centered questions
+Patient-centered
 
 ## principle-2-text
-Patients and patient advocates should have a meaningful say in which questions deserve to be answered.
+Patients help decide which questions to study.
 
 ## principle-3-title
-Federated by design
+Federated
 
 ## principle-3-text
-Bring standardised analyses to the data rather than centralising sensitive records. The network is stronger precisely because it is not one database.
+Analyses go to the data. Sensitive records stay with each institution.
 
 ## principle-4-title
-Reproducible science
+Reproducible
 
 ## principle-4-text
-A study should be inspectable, repeatable, and able to run across more than one database. 
+Every study can be inspected, rerun, and applied to other databases.
 
 ## principle-5-title
-Sustainable evidence generation
+Sustainable
 
 ## principle-5-text
-Rigorous evidence costs real money. We want to experiment with economic and organisational models that fund it while keeping what it produces available for public benefit in perpetuity.
+We are testing funding models that keep the evidence publicly available.
 
 ## principle-6-title
-Evidence that compounds
+Cumulative
 
 ## principle-6-text
-Studies should add to an accumulating knowledge base rather than disappearing into isolated reports that nobody revisits.
+Each study adds to a shared evidence base.
 
 # Join (signup section)
 
@@ -241,7 +226,7 @@ Studies should add to an accumulating knowledge base rather than disappearing in
 Get involved
 
 ## join-title
-Join OHDSI Boston.
+Join OHDSI Boston
 
 ## join-lede
 Join researchers, clinicians, patients, engineers, and data partners working to generate real-world evidence for the public good.
@@ -256,4 +241,4 @@ Join OHDSI Boston
 We'll use your contact information to communicate about OHDSI Boston. We'll never publish or sell your contact information.
 
 ## elsewhere-heading
-Elsewhere
+Links
