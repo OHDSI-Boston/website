@@ -19,7 +19,7 @@ Preview locally: python3 scripts/build_content.py, then run the site.
 OHDSI Boston
 
 ## hero-title
-Real-world health evidence, generated in Boston.
+Real-world health evidence from Boston.
 
 ## hero-lede
 Routine medical care produces data that can answer important health questions. OHDSI Boston analyzes that data safely and makes the results public.
